@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllBoardSlugs } from "@/lib/matric/boards";
 import { getAllSubjectSlugs } from "@/lib/matric/subjects";
+import { getAllUniversitySlugs, getAllProvinceSlugs } from "@/lib/universities";
 
 const BASE_URL = "https://pakedu.pk";
 
@@ -33,11 +34,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const universityPages = [
-    "comsats-university-islamabad", "fast-nuces", "uet-lahore", "lums",
-    "nust", "punjab-university", "aga-khan-university", "ned-university",
-  ].map((slug) => ({
+  const universityPages = getAllUniversitySlugs().map((slug) => ({
     url: `${BASE_URL}/universities/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
+  const provincePages = getAllProvinceSlugs().map((slug) => ({
+    url: `${BASE_URL}/universities/province/${slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
@@ -134,6 +139,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPages,
     ...calculatorPages,
     ...universityPages,
+    ...provincePages,
     ...categoryPages,
     ...teacherPages,
     ...matricStaticPages,
