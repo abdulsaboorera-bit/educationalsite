@@ -110,6 +110,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  // ===== INTERMEDIATE PAGES =====
+  const intermediateStaticPages = [
+    { url: `${BASE_URL}/intermediate`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/11`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/12`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/fsc-pre-medical`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/fsc-pre-engineering`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/ics`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/fa`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/intermediate/icom`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/intermediate/boards`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/past-papers`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/results`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/date-sheets`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/entry-tests`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intermediate/scholarships`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/intermediate/calculators`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/intermediate/careers`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+  ];
+
   return [
     ...staticPages,
     ...calculatorPages,
@@ -122,5 +142,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pastPaperPages,
     ...resultPages,
     ...dateSheetPages,
+    ...intermediateStaticPages,
   ];
 }

@@ -35,6 +35,18 @@ function Footer() {
             </ul>
           </div>
           <div>
+            <h4 className="text-sm font-semibold text-white mb-3">Intermediate</h4>
+            <ul className="space-y-2">
+              {FOOTER_LINKS.intermediate.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-slate-400 hover:text-emerald-400 transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
             <h4 className="text-sm font-semibold text-white mb-3">Calculators</h4>
             <ul className="space-y-2">
               {FOOTER_LINKS.calculators.map((link) => (
