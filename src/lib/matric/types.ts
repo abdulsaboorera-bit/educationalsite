@@ -86,3 +86,14 @@ export interface BoardPageSection {
   slug: string;
   description: string;
 }
+
+export interface Chapter {
+  id: string;
+  number: number;
+  title: string;
+  slug: string;
+  subject: string;
+  classLevel: "9" | "10" | "both";
+  topics: string[];
+  pageEstimate?: number;
+}
