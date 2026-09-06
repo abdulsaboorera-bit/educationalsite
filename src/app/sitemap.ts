@@ -24,6 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "cgpa", "gpa", "percentage", "marks", "attendance",
     "mdcat-aggregate", "ecat-aggregate", "nums-aggregate",
     "merit", "entry-test-aggregate",
+    "matric-percentage", "matric-grade", "passing-marks", "required-marks",
+    "subject-percentage", "matric-aggregate", "improvement-marks",
   ].map((slug) => ({
     url: `${BASE_URL}/calculators/${slug}`,
     lastModified: new Date(),
@@ -67,6 +69,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/matric/class-9`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
     { url: `${BASE_URL}/matric/class-10`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
     { url: `${BASE_URL}/matric/subjects`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/matric/past-papers`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/matric/results`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/matric/date-sheets`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/matric/after-matric`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
   ];
 
   const boardPages = getAllBoardSlugs().map((slug) => ({
@@ -83,6 +89,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const pastPaperPages = getAllBoardSlugs().map((slug) => ({
+    url: `${BASE_URL}/matric/past-papers/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  const resultPages = getAllBoardSlugs().map((slug) => ({
+    url: `${BASE_URL}/matric/results/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
+  const dateSheetPages = getAllBoardSlugs().map((slug) => ({
+    url: `${BASE_URL}/matric/date-sheets/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
   return [
     ...staticPages,
     ...calculatorPages,
@@ -92,5 +119,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...matricStaticPages,
     ...boardPages,
     ...subjectPages,
+    ...pastPaperPages,
+    ...resultPages,
+    ...dateSheetPages,
   ];
 }

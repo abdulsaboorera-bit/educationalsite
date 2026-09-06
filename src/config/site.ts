@@ -14,7 +14,12 @@ export const NAV_ITEMS = [
     { label: "All Boards", href: "/matric/boards" },
     { label: "Class 9", href: "/matric/class-9" },
     { label: "Class 10", href: "/matric/class-10" },
+    { label: "Past Papers", href: "/matric/past-papers" },
+    { label: "Results", href: "/matric/results" },
+    { label: "Date Sheets", href: "/matric/date-sheets" },
     { label: "All Subjects", href: "/matric/subjects" },
+    { label: "Matric Calculators", href: "/calculators?category=matric" },
+    { label: "After Matric", href: "/matric/after-matric" },
     { label: "About Matric", href: "/matric/about" },
   ]},
   { label: "Universities", href: "/universities", children: [
@@ -42,10 +47,11 @@ export const FOOTER_LINKS = {
   matric: [
     { label: "Matric Overview", href: "/matric" },
     { label: "All Boards", href: "/matric/boards" },
-    { label: "Class 9", href: "/matric/class-9" },
-    { label: "Class 10", href: "/matric/class-10" },
+    { label: "Past Papers", href: "/matric/past-papers" },
+    { label: "Results", href: "/matric/results" },
+    { label: "Date Sheets", href: "/matric/date-sheets" },
     { label: "All Subjects", href: "/matric/subjects" },
-    { label: "About Matric", href: "/matric/about" },
+    { label: "After Matric", href: "/matric/after-matric" },
   ],
   calculators: [
     { label: "CGPA Calculator", href: "/calculators/cgpa" },
