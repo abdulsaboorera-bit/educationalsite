@@ -2,20 +2,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { getAllBoardSlugs, getBoardBySlug } from "@/lib/matric/boards";
-import { getAllSubjectSlugs, getSubjectBySlug, subjects } from "@/lib/matric/subjects";
+import { getBoardBySlug } from "@/lib/matric/boards";
+import { getSubjectBySlug, subjects } from "@/lib/matric/subjects";
 
-export function generateStaticParams() {
-  const params: { board: string; classLevel: string; subject: string }[] = [];
-  for (const boardSlug of getAllBoardSlugs()) {
-    for (const cls of ["9", "10"]) {
-      for (const subjectSlug of getAllSubjectSlugs()) {
-        params.push({ board: boardSlug, classLevel: cls, subject: subjectSlug });
-      }
-    }
-  }
-  return params;
-}
+export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ board: string; classLevel: string; subject: string }> };
 
