@@ -106,7 +106,6 @@ export default function BoardsPage() {
                       href={board.official_website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700"
                     >
                       Official Site <ExternalLink className="h-3 w-3" />

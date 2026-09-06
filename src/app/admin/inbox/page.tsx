@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface CrawledDoc {
   _id: string;
@@ -20,12 +20,9 @@ export default function AdminInboxPage() {
   const [stats, setStats] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("new");
+  const [refreshKey, setRefreshKey] = useState(0);
 
-  useEffect(() => {
-    fetchDocs();
-  }, [filter]);
-
-  async function fetchDocs() {
+  const fetchDocs = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/admin/crawl");
@@ -40,7 +37,11 @@ export default function AdminInboxPage() {
     } finally {
       setLoading(false);
     }
-  }
+  }, [filter]);
+
+  useEffect(() => {
+    fetchDocs();
+  }, [fetchDocs, refreshKey]);
 
   async function updateStatus(docId: string, status: string) {
     try {
@@ -49,7 +50,7 @@ export default function AdminInboxPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ document_id: docId, verification_status: status }),
       });
-      if (res.ok) fetchDocs();
+      if (res.ok) setRefreshKey((k) => k + 1);
     } catch {
       console.error("Failed to update status");
     }

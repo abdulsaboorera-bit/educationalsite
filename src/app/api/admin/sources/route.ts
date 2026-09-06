@@ -37,7 +37,7 @@ export async function GET() {
     await connectDB();
     const sources = await Source.find().sort({ created_at: -1 }).lean();
     return NextResponse.json({ sources, total: sources.length });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch sources" }, { status: 500 });
   }
 }

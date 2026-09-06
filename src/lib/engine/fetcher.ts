@@ -1,6 +1,5 @@
 import * as crypto from "crypto";
 import * as cheerio from "cheerio";
-import type { CrawlResult, ClassifierResult, ExtractedInfo, DocumentType } from "./types";
 
 const USER_AGENT = "PakEduBot/1.0 (+https://pakedu.pk) Education Data Crawler";
 const REQUEST_TIMEOUT = 30000;
@@ -36,9 +35,8 @@ export async function fetchPage(url: string): Promise<{ html: string; status: nu
       const hash = computeHash(html);
 
       return { html, status: response.status, hash };
-    } catch (error) {
+    } catch {
       if (attempt === MAX_RETRIES) {
-        const errMsg = error instanceof Error ? error.message : "Unknown error";
         return { html: "", status: 0, hash: "" };
       }
       await new Promise((r) => setTimeout(r, 1000 * (attempt + 1)));

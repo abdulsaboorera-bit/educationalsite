@@ -171,7 +171,7 @@ export async function GET() {
       .lean();
 
     return NextResponse.json({ stats, recent_documents: recentDocs });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch crawl status" }, { status: 500 });
   }
 }
